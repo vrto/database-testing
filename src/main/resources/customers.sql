@@ -4,4 +4,4 @@ CREATE TABLE customers (
   last_name VARCHAR(255),
   country_code CHAR(2),
   age INT
-)
+);

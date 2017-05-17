@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @Setter
 public class Customer {
 
+    @Id
     Long id;
 
     String firstName;
