@@ -20,6 +20,8 @@ public class JpaCustomerRepository implements CustomerRepository {
         return query.getSingleResult();
     }
 
+    // these methods don't matter now
+
     @Override
     public Customer findAll() { return null; }
 
