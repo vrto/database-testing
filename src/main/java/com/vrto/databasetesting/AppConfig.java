@@ -1,6 +1,7 @@
 package com.vrto.databasetesting;
 
 import lombok.val;
+import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,9 +24,14 @@ public class AppConfig {
 
     @Bean
     public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder()
+        val dataSource = new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .addScript("customers.sql")
+                .build();
+
+        return ProxyDataSourceBuilder
+                .create(dataSource)
+                .countQuery() // collect query metrics
                 .build();
     }
 
@@ -42,9 +48,9 @@ public class AppConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         val lemfb = new LocalContainerEntityManagerFactoryBean();
-        lemfb.setDataSource(dataSource());
+        lemfb.setDataSource(dataSource);
         lemfb.setJpaVendorAdapter(jpaVendorAdapter());
         lemfb.setPackagesToScan("com.vrto");
         return lemfb;

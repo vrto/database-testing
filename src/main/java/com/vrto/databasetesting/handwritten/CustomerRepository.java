@@ -2,11 +2,14 @@ package com.vrto.databasetesting.handwritten;
 
 import com.vrto.databasetesting.Customer;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface CustomerRepository {
 
-    Customer findOne(long customerId);
+    Optional<Customer> findOne(long customerId);
 
-    Customer findAll();
+    List<Customer> findAll();
 
     void save(Customer customer);
 

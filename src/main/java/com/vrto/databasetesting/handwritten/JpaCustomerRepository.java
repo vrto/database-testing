@@ -5,7 +5,11 @@ import lombok.val;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class JpaCustomerRepository implements CustomerRepository {
@@ -14,16 +18,20 @@ public class JpaCustomerRepository implements CustomerRepository {
     EntityManager entityManager;
 
     @Override
-    public Customer findOne(long customerId) {
+    public Optional<Customer> findOne(long customerId) {
         val query = entityManager.createQuery("SELECT c FROM Customer c WHERE c.id = :customerId", Customer.class);
         query.setParameter("customerId", customerId);
-        return query.getSingleResult();
+        try {
+            return Optional.of(query.getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
     }
 
     // these methods don't matter now
 
     @Override
-    public Customer findAll() { return null; }
+    public List<Customer> findAll() { return Collections.emptyList(); }
 
     @Override
     public void save(Customer customer) {}

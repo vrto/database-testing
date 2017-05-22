@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS customers;
+
 CREATE TABLE customers (
   id IDENTITY PRIMARY KEY,
   first_name VARCHAR(255),
