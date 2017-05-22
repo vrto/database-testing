@@ -5,10 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "customers")
@@ -18,6 +17,7 @@ import javax.persistence.Table;
 public class Customer {
 
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     Long id;
 
     @Column(name = "first_name")
@@ -27,5 +27,8 @@ public class Customer {
     String lastName;
 
     Integer age;
+
+    @Column(name = "country_code")
+    String countryCode;
 
 }

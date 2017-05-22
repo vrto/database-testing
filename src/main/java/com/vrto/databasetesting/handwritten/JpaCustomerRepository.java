@@ -38,4 +38,13 @@ public class JpaCustomerRepository implements CustomerRepository {
 
     @Override
     public void delete(long customerId) {}
+
+    public List<Customer> findCustomersByAgeAndCountryCode(int age, String countryCode) {
+        val queryString = "SELECT c FROM Customer c WHERE c.age = :age AND c.countryCode = :code";
+        val query = entityManager.createQuery(queryString, Customer.class);
+        query.setParameter("age", age);
+        query.setParameter("code", countryCode);
+
+        return query.getResultList();
+    }
 }

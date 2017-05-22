@@ -1,3 +1,4 @@
 <dataset>
     <customers id="1" first_name="Wayne" last_name="Gretzky" country_code="CA" age="56" />
+    <customers id="2" first_name="Mario" last_name="Lemieux" country_code="CA" age="51" />
 </dataset>
