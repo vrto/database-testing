@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -30,5 +31,9 @@ public class Customer {
 
     @Column(name = "country_code")
     String countryCode;
+
+    @OneToMany
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
+    List<CustomerSocialMedia> socialMedia;
 
 }

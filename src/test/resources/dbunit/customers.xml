@@ -1,4 +1,10 @@
 <dataset>
-    <customers id="1" first_name="Wayne" last_name="Gretzky" country_code="CA" age="56" />
-    <customers id="2" first_name="Mario" last_name="Lemieux" country_code="CA" age="51" />
+    <!-- north americans -->
+    <customers id="1" first_name="The" last_name="Dude" country_code="US" age="56" />
+    <customers id="2" first_name="Mia" last_name="Wallace" country_code="US" age="25" />
+    <customers id="3" first_name="Terrance" last_name="Phillip" country_code="CA" age="66" />
+
+    <!-- europeans -->
+    <customers id="4" first_name="Lara" last_name="Croft" country_code="EU" age="22" />
+    <customers id="5" first_name="Marie" last_name="Curie" country_code="EU" age="67" />
 </dataset>

@@ -2,6 +2,7 @@ package com.vrto.databasetesting;
 
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
@@ -14,6 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @Setter
+@NoArgsConstructor
 public class CustomerSocialMedia {
 
     @Id

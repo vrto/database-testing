@@ -1,3 +1,8 @@
 <dataset>
-    <customers_social_media id="1" customer_id="1" social_media="TWITTER" />
+    <!-- on twitter -->
+    <customers_social_media id="1" customer_id="2" social_media="TWITTER" />
+    <customers_social_media id="2" customer_id="3" social_media="TWITTER" />
+
+    <!-- on facebook -->
+    <customers_social_media id="3" customer_id="4" social_media="FACEBOOK" />
 </dataset>

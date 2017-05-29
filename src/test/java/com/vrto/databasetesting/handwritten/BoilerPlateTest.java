@@ -1,24 +1,15 @@
 package com.vrto.databasetesting.handwritten;
 
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.DatabaseSetup;
-import com.vrto.databasetesting.AppConfig;
+import com.vrto.databasetesting.RepositoryTest;
 import com.vrto.databasetesting.springdata.SpringCustomerRepository;
 import lombok.val;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
 import static org.fest.assertions.Assertions.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, DbUnitTestExecutionListener.class})
-public class BoilerPlateTest {
+public class BoilerPlateTest extends RepositoryTest {
 
     @Autowired
     JpaCustomerRepository boilerplateRepository;
@@ -29,9 +20,9 @@ public class BoilerPlateTest {
     @Test
     @DatabaseSetup("/dbunit/customers.xml")
     public void bothRepositoriesWorkSame() {
-        expectedCustomers(51, "US", 0);
+        expectedCustomers(66, "US", 0);
         expectedCustomers(100, "CA", 0);
-        expectedCustomers(51, "CA", 1);
+        expectedCustomers(66, "CA", 1);
     }
 
     private void expectedCustomers(int age, String countryCode, int expectedCount) {
